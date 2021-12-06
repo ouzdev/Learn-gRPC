@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "grpcServer";
 
-package greet;
+package greets;
 
 service Greeter {
 

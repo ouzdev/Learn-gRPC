@@ -24,10 +24,10 @@ namespace grpcServer {
     static GreetReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJQcm90b3MvZ3JlZXQucHJvdG8SBWdyZWV0IhwKDEhlbGxvUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCTI9",
-            "CgdHcmVldGVyEjIKCFNheUhlbGxvEhMuZ3JlZXQuSGVsbG9SZXF1ZXN0GhEu",
-            "Z3JlZXQuSGVsbG9SZXBseUINqgIKZ3JwY1NlcnZlcmIGcHJvdG8z"));
+            "ChJQcm90b3MvZ3JlZXQucHJvdG8SB2dyZWV0c3MiHAoMSGVsbG9SZXF1ZXN0",
+            "EgwKBG5hbWUYASABKAkiHQoKSGVsbG9SZXBseRIPCgdtZXNzYWdlGAEgASgJ",
+            "MkEKB0dyZWV0ZXISNgoIU2F5SGVsbG8SFS5ncmVldHNzLkhlbGxvUmVxdWVz",
+            "dBoTLmdyZWV0c3MuSGVsbG9SZXBseUINqgIKZ3JwY1NlcnZlcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -39,6 +39,9 @@ namespace grpcServer {
 
   }
   #region Messages
+  /// <summary>
+  /// The request message containing the user's name.
+  /// </summary>
   public sealed partial class HelloRequest : pb::IMessage<HelloRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -80,9 +83,6 @@ namespace grpcServer {
     /// <summary>Field number for the "name" field.</summary>
     public const int NameFieldNumber = 1;
     private string name_ = "";
-    /// <summary>
-    ///Binary formata dönüştürülürken propların sırasını belirlemek sayısal değerlerdir.
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
       get { return name_; }
@@ -214,6 +214,9 @@ namespace grpcServer {
 
   }
 
+  /// <summary>
+  /// The response message containing the greetings.
+  /// </summary>
   public sealed partial class HelloReply : pb::IMessage<HelloReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -255,9 +258,6 @@ namespace grpcServer {
     /// <summary>Field number for the "message" field.</summary>
     public const int MessageFieldNumber = 1;
     private string message_ = "";
-    /// <summary>
-    ///Binary formata dönüştürülürken propların sırasını belirlemek sayısal değerlerdir.
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Message {
       get { return message_; }

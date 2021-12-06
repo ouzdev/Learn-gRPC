@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ouzdev\\Desktop\\grpcServer\\grpcServer.csproj": {}
+    "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcServer\\grpcServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ouzdev\\Desktop\\grpcServer\\grpcServer.csproj": {
+    "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcServer\\grpcServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\grpcServer\\grpcServer.csproj",
+        "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcServer\\grpcServer.csproj",
         "projectName": "grpcServer",
-        "projectPath": "C:\\Users\\ouzdev\\Desktop\\grpcServer\\grpcServer.csproj",
+        "projectPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcServer\\grpcServer.csproj",
         "packagesPath": "C:\\Users\\ouzdev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ouzdev\\Desktop\\grpcServer\\obj\\",
+        "outputPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

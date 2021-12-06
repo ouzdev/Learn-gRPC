@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj": {}
+    "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj": {
+    "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj",
+        "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj",
         "projectName": "grpcClient",
-        "projectPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj",
+        "projectPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj",
         "packagesPath": "C:\\Users\\ouzdev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\obj\\",
+        "outputPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,9 +43,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.19.1, )"
+            },
             "Grpc.AspNetCore": {
               "target": "Package",
               "version": "[2.40.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.40.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.42.0, )"
             }
           },
           "imports": [

@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Google.Protobuf/3.18.0": {
+      "Google.Protobuf/3.19.1": {
         "type": "package",
         "compile": {
           "lib/net5.0/Google.Protobuf.dll": {}
@@ -106,7 +106,7 @@
           "lib/net6.0/Grpc.Net.Common.dll": {}
         }
       },
-      "Grpc.Tools/2.40.0": {
+      "Grpc.Tools/2.42.0": {
         "type": "package",
         "build": {
           "build/Grpc.Tools.props": {},
@@ -242,14 +242,14 @@
     }
   },
   "libraries": {
-    "Google.Protobuf/3.18.0": {
-      "sha512": "Jm6+nppUm9LD+XVsLFkf1YyVlAKsG5gq+Hc/Rn3Zi2pDObBI6PCH/eHBFUJdARl40DpczEdHlV3+WTPOGIXetg==",
+    "Google.Protobuf/3.19.1": {
+      "sha512": "M6yun2BPdHkBjD3V14muZSt72azWHRJEx88ME2TyyH2+/ww6R3hIptjBFQQtO6pmkfLXW/NGQ4hADWSa9AmK2A==",
       "type": "package",
-      "path": "google.protobuf/3.18.0",
+      "path": "google.protobuf/3.19.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.18.0.nupkg.sha512",
+        "google.protobuf.3.19.1.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
         "lib/net45/Google.Protobuf.pdb",
@@ -414,10 +414,10 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Tools/2.40.0": {
-      "sha512": "yOAhijs6POv7oISBV9Rdx5YCSdo/+6zCJTB/ULum3GA4RunxVFI0rPnpJM1+YM9yMf+H1/D001ignsepnygPJw==",
+    "Grpc.Tools/2.42.0": {
+      "sha512": "JDOc5lWQEii5m0mcwtRHrQ5NAoc0BE9b5NRzjI/IC8roNynAV/9exWFwLhTW/5wgeaR+ATAfu4ZtMBO+21Z0qA==",
       "type": "package",
-      "path": "grpc.tools/2.40.0",
+      "path": "grpc.tools/2.42.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -446,7 +446,7 @@
         "build/native/include/google/protobuf/timestamp.proto",
         "build/native/include/google/protobuf/type.proto",
         "build/native/include/google/protobuf/wrappers.proto",
-        "grpc.tools.2.40.0.nupkg.sha512",
+        "grpc.tools.2.42.0.nupkg.sha512",
         "grpc.tools.nuspec",
         "tools/linux_arm64/grpc_csharp_plugin",
         "tools/linux_arm64/protoc",
@@ -644,7 +644,10 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Grpc.AspNetCore >= 2.40.0"
+      "Google.Protobuf >= 3.19.1",
+      "Grpc.AspNetCore >= 2.40.0",
+      "Grpc.Net.Client >= 2.40.0",
+      "Grpc.Tools >= 2.42.0"
     ]
   },
   "packageFolders": {
@@ -654,11 +657,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj",
+      "projectUniqueName": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj",
       "projectName": "grpcClient",
-      "projectPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\grpcClient.csproj",
+      "projectPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj",
       "packagesPath": "C:\\Users\\ouzdev\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\grpcClient\\obj\\",
+      "outputPath": "C:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -690,9 +693,23 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Google.Protobuf": {
+            "target": "Package",
+            "version": "[3.19.1, )"
+          },
           "Grpc.AspNetCore": {
             "target": "Package",
             "version": "[2.40.0, )"
+          },
+          "Grpc.Net.Client": {
+            "target": "Package",
+            "version": "[2.40.0, )"
+          },
+          "Grpc.Tools": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.42.0, )"
           }
         },
         "imports": [
