@@ -1,6 +1,33 @@
-var builder = WebApplication.CreateBuilder(args);
+﻿using System;
+using System.Threading.Tasks;
+using Grpc.Net.Client;
+using grpcServer;
 
-var app = builder.Build();
-app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+namespace grpcClient
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            //İlgili server url:port adresine göre bir kanal oluşturup bunu Client a parametre olarak geçerek Client bağlantısını tamamlamış oluyoruz.
+            var channel = GrpcChannel.ForAddress("https://localhost:7172");
+            var greetClient = new Greeter.GreeterClient(channel);
 
-app.Run();
+            HelloReply msg = await greetClient.SayHelloAsync(
+                 new HelloRequest()
+                 { Name = "Oğuzcan Genç" }
+                 );
+            CalculatorReply clc = await greetClient.CalculatorAsync(
+                new CalculatorRequest()
+                {
+                    Sayi1 = 15,
+                    Sayi2 = 50
+                }
+            );
+            Console.WriteLine(msg.Message);
+            Console.WriteLine(clc.Toplam);
+
+
+        }
+    }
+}

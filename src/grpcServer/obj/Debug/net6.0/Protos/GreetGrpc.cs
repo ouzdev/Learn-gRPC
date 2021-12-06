@@ -10,7 +10,7 @@ using grpc = global::Grpc.Core;
 namespace grpcServer {
   public static partial class Greeter
   {
-    static readonly string __ServiceName = "greetss.Greeter";
+    static readonly string __ServiceName = "greets.Greeter";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -46,17 +46,29 @@ namespace grpcServer {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::grpcServer.HelloRequest> __Marshaller_greetss_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.HelloRequest.Parser));
+    static readonly grpc::Marshaller<global::grpcServer.HelloRequest> __Marshaller_greets_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.HelloRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::grpcServer.HelloReply> __Marshaller_greetss_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.HelloReply.Parser));
+    static readonly grpc::Marshaller<global::grpcServer.HelloReply> __Marshaller_greets_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.HelloReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::grpcServer.CalculatorRequest> __Marshaller_greets_CalculatorRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.CalculatorRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::grpcServer.CalculatorReply> __Marshaller_greets_CalculatorReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::grpcServer.CalculatorReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::grpcServer.HelloRequest, global::grpcServer.HelloReply> __Method_SayHello = new grpc::Method<global::grpcServer.HelloRequest, global::grpcServer.HelloReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SayHello",
-        __Marshaller_greetss_HelloRequest,
-        __Marshaller_greetss_HelloReply);
+        __Marshaller_greets_HelloRequest,
+        __Marshaller_greets_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::grpcServer.CalculatorRequest, global::grpcServer.CalculatorReply> __Method_Calculator = new grpc::Method<global::grpcServer.CalculatorRequest, global::grpcServer.CalculatorReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Calculator",
+        __Marshaller_greets_CalculatorRequest,
+        __Marshaller_greets_CalculatorReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -74,6 +86,12 @@ namespace grpcServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::grpcServer.CalculatorReply> Calculator(global::grpcServer.CalculatorRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -82,7 +100,8 @@ namespace grpcServer {
     public static grpc::ServerServiceDefinition BindService(GreeterBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SayHello, serviceImpl.SayHello).Build();
+          .AddMethod(__Method_SayHello, serviceImpl.SayHello)
+          .AddMethod(__Method_Calculator, serviceImpl.Calculator).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -93,6 +112,7 @@ namespace grpcServer {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::grpcServer.HelloRequest, global::grpcServer.HelloReply>(serviceImpl.SayHello));
+      serviceBinder.AddMethod(__Method_Calculator, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::grpcServer.CalculatorRequest, global::grpcServer.CalculatorReply>(serviceImpl.Calculator));
     }
 
   }

@@ -18,4 +18,12 @@ public class GreeterService : Greeter.GreeterBase
             Message = "Hello " + request.Name
         });
     }
+
+    public override Task<CalculatorReply> Calculator(CalculatorRequest request, ServerCallContext context)
+    {
+        return Task.FromResult(new CalculatorReply
+        {
+            Toplam = request.Sayi1 + request.Sayi2
+        });
+    }
 }

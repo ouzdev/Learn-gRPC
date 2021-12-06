@@ -1,0 +1,19 @@
+{
+  "FilePath": "c:\\Users\\ouzdev\\Desktop\\gRPC\\src\\grpcClient\\grpcClient.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "6.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 800
+  },
+  "RootNamespace": "grpcClient",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

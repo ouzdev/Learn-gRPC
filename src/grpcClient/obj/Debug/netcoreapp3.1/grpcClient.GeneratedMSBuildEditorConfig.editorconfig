@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = grpcClient
+build_property.ProjectDir = C:\Users\ouzdev\Desktop\gRPC\src\grpcClient\
