@@ -41,3 +41,12 @@ gRPC uygulamarda Client ve Server haberleşirken iletim türü ve mesaj içeriğ
 - **Bi-Directional:**  Çift yönlü duplex streaming türüdür. Aynı anda Client ve Server ın haberleştiği modeldir.
 ## gRPC Yaşam Döngüsü
 Protobuf dosyası protoc ile compile edildiğinde ilgili platforma uygun bir şekilde arayüzler sınıfları oluşacaktır. Bu arayüzler oluştuktan sonra arayüzler sayesinde Client ve Server ın haberleşmesi mümkün hale gelecektir. Haberleşmede HTTP2 protokolu kullanılır. Herhangi bir iletiim türü ile iletişimde bulunulduğunda ilk olarak meta-data adında ki yapılanmalar RPC ye gidecektir ve sonrasında veri gönderilecektir.
+
+## Unary
+
+Unary konsepti gRPC'deki en basit iletişim türüdür. Tek bir request'e karşılık tek bir response alınan en temel modeldir.
+Örnek bir kodlama üzerinden Unary türünü inceleyelim.
+
+İlk olarak gerekli .proto uzantılı dosyamızı oluşturalım. Proto dosyamızın adı material.proto olcaktır. Bu işlemi ilk olarak Server tarafında yapıyoruz.
+
+
