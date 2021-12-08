@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
+using grpcMaterialClient;
 using grpcServer;
 
 namespace grpcClient
@@ -27,7 +28,17 @@ namespace grpcClient
             Console.WriteLine(msg.Message);
             Console.WriteLine(clc.Toplam);
 
+            var materialClient = new Material.MaterialClient(channel);
 
+            MaterialCreateReply returnMessage = await materialClient.SendCreateMaterialAsync(
+                new MaterialCreateRequest(){
+                    Name="Apple Macbook Pro 15 M1 Pro",
+                    Description="Apple Macbook Pro 16 gb Ram M1 CPU", 
+                    Sku="MBPM1"
+                }
+            );
+
+            Console.WriteLine(returnMessage.Message);
         }
     }
 }

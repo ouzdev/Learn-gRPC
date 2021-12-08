@@ -49,4 +49,66 @@ Unary konsepti gRPC'deki en basit iletişim türüdür. Tek bir request'e karş�
 
 İlk olarak gerekli .proto uzantılı dosyamızı oluşturalım. Proto dosyamızın adı material.proto olcaktır. Bu işlemi ilk olarak Server tarafında yapıyoruz.
 
+syntax = "proto3";
+
+option csharp_namespace = "grpcMaterialServer";
+
+package materials;
+
+service Material {
+
+  rpc SendCreateMaterial(MaterialCreateRequest) returns (MaterialCreateReply);  
+}
+
+message MaterialCreateRequest {
+  string name = 1;
+  string description=2;
+  string sku=3;
+}
+
+message MaterialCreateReply {
+  string message = 1;
+}
+
+Proto dosyasını oluşturduktan sonra .csproj dosyasında ProtoBuf tanımlamasını yapıyoruz.
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\material.proto" GrpcServices="Server" /> // İlgili proto tanımımız
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+  </ItemGroup>
+
+</Project>
+
+Sonrasında Client tarafında ilk olarak build işlemini yapıyoruz sonrasında Program.cs dosyasında ilgili methodu çağırıp bir request oluşturuyorum.
+
+var materialClient = new Material.MaterialClient(channel);
+
+            MaterialCreateReply returnMessage = await materialClient.SendCreateMaterialAsync(
+                new MaterialCreateRequest(){
+                    Name="Apple Macbook Pro 15 M1 Pro",
+                    Description="Apple Macbook Pro 16 gb Ram M1 CPU", 
+                    Sku="MBPM1"
+                }
+            );
+
+            Console.WriteLine(returnMessage.Message);
+
+Bu işlemden sonra örnek ekran çıktımız
+
+********** Eklenen Malzeme Bilgileri **********
+Eklenen Malzeme Kartı Adı --> Apple Macbook Pro 15 M1 Pro
+Eklenen Malzeme Kartı Açıklaması --> Apple Macbook Pro 16 gb Ram M1 CPU
+Eklenen Malzeme Stok Kodu --> MBPM1
 

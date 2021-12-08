@@ -16,9 +16,10 @@ public class MaterialService : Material.MaterialBase
 
         return Task.FromResult(new MaterialCreateReply
         {
-            Message = "Eklenen Malzeme Kartı Adı --> " + request.Name + "\n" +
+            Message = "********** Eklenen Malzeme Bilgileri **********" + "\n" +
+                      "Eklenen Malzeme Kartı Adı --> " + request.Name + "\n" +
                       "Eklenen Malzeme Kartı Açıklaması --> " + request.Description + "\n" +
-                      "Eklenen Malzeme Stok Kodu -->" + request.Sku
+                      "Eklenen Malzeme Stok Kodu --> " + request.Sku
         });
     }
 }
