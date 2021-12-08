@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcMaterialClient";
+
+package materials;
+
+service Material {
+
+  rpc SendCreateMaterial(MaterialCreateRequest) returns (MaterialCreateReply);  
+}
+
+message MaterialCreateRequest {
+  string name = 1;
+  string description=2;
+  string sku=3;
+}
+
+message MaterialCreateReply {
+  string message = 1;
+}
