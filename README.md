@@ -131,20 +131,20 @@ Bunu örnek kodlama üzerinden inceleyelim. Örnek olarak fatura bilgilerini gö
 
     option csharp_namespace = "grpcInvoiceServer";
 
-   package invoices;
+     package invoices;
 
-   service Invoice {
+     service Invoice {
 
      rpc SendCreateInvoiceParameter(MaterialCreateRequest) returns (stream InvoiceCreateResponse);  //Server stream olacağı için return tipini stream olarak belirliyoruz.
-   }
+    }
 
     message InvoiceCreateRequest {
       string name = 1;
       string description=2;
       string no=3;
-   }
+     }
 
-   message InvoiceCreateResponse {
+     message InvoiceCreateResponse {
       string invoice = 1;
     }
 
