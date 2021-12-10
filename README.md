@@ -1,10 +1,12 @@
 # gRPC 
+
+![grpc-nedir](https://github.com/ouzdev/gRPC/blob/master/grpc-net-core.png?raw=true)
 ## Başlangıç
 gRPC (Remote Procedure Call) Client başka bir sunucu uygulamasında ki bir fonksiyonu sanki kendi içerisindeki bir fonksiyonmuş gibi çağırıp çalıştırmasını sağlayan bir teknolojidir.
 
 **Not: Burada ki içerikler gRPC öğrenirken aldığım notlarımın bir özeti mahiyetindedir.**
 
-[![](grpc)](http://https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40sddkal%2Fgrpc-api-rehberi-6dc561070c03&psig=AOvVaw0dX5UGRRq0hu4jpzzYgvx5&ust=1638906138049000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJDo2aT3z_QCFQAAAAAdAAAAABAD)
+
 gRPC kullanılan uygulamarda iletişim Http2 protokolu kullanılarak tekbir TCP bağlantısı üzerinden sağlanır.Http2 binary serialization yöntemiyle datayı ilgili kaynağa iletir dolayısıyla data aktarımı RESTful servislerdeki text-based serialization yönteminden daha hızlı gerçekleşmektedir. Http2 protokolü çift taraflı stream sayesinde bir request karşılığında birden fazla response alınabilir. Bunun gibi değişik kombinasyonlarda request ve response senaryoları mümkündür. Bu konuya ilerleyen aşamalarda değineceğiz.
 
 
@@ -40,6 +42,9 @@ gRPC uygulamarda Client ve Server haberleşirken iletim türü ve mesaj içeriğ
 - **Client Streaming:**  Server Streaming in tam tersidir Client birden fazla istekte bulunur neticesinde tek bir response donulen türdür.
 - **Bi-Directional:**  Çift yönlü duplex streaming türüdür. Aynı anda Client ve Server ın haberleştiği modeldir.
 ## gRPC Yaşam Döngüsü
+![grpc-workflow](https://github.com/ouzdev/gRPC/blob/master/gRPC-workflow.png?raw=true)
+![grpc-workflow](https://github.com/ouzdev/gRPC/blob/master/grpc-workflow.jpeg?raw=true)
+
 Protobuf dosyası protoc ile compile edildiğinde ilgili platforma uygun bir şekilde arayüzler sınıfları oluşacaktır. Bu arayüzler oluştuktan sonra arayüzler sayesinde Client ve Server ın haberleşmesi mümkün hale gelecektir. Haberleşmede HTTP2 protokolu kullanılır. Herhangi bir iletiim türü ile iletişimde bulunulduğunda ilk olarak meta-data adında ki yapılanmalar RPC ye gidecektir ve sonrasında veri gönderilecektir.
 
 ## Unary
@@ -49,51 +54,51 @@ Unary konsepti gRPC'deki en basit iletişim türüdür. Tek bir request'e karş�
 
 İlk olarak gerekli .proto uzantılı dosyamızı oluşturalım. Proto dosyamızın adı material.proto olcaktır. Bu işlemi ilk olarak Server tarafında yapıyoruz.
 
-syntax = "proto3";
+    syntax = "proto3";
 
-option csharp_namespace = "grpcMaterialServer";
+    option csharp_namespace = "grpcMaterialServer";
 
-package materials;
+    package materials;
 
-service Material {
+    service Material {
 
-  rpc SendCreateMaterial(MaterialCreateRequest) returns (MaterialCreateReply);  
-}
+     rpc SendCreateMaterial(MaterialCreateRequest) returns (MaterialCreateReply);  
+    }
 
-message MaterialCreateRequest {
-  string name = 1;
-  string description=2;
-  string sku=3;
-}
+    message MaterialCreateRequest {
+    string name = 1;
+    string description=2;
+    string sku=3;
+    }
 
-message MaterialCreateReply {
-  string message = 1;
-}
+    message MaterialCreateReply {
+    string message = 1;
+    }
 
 Proto dosyasını oluşturduktan sonra .csproj dosyasında ProtoBuf tanımlamasını yapıyoruz.
 
-<Project Sdk="Microsoft.NET.Sdk.Web">
+    <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-    <Protobuf Include="Protos\material.proto" GrpcServices="Server" /> // İlgili proto tanımımız
-  </ItemGroup>
+    <ItemGroup>
+        <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+        <Protobuf Include="Protos\material.proto" GrpcServices="Server" /> // İlgili proto tanımımız
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    </ItemGroup>
 
-</Project>
+    </Project>
 
 Sonrasında Client tarafında ilk olarak build işlemini yapıyoruz sonrasında Program.cs dosyasında ilgili methodu çağırıp bir request oluşturuyorum.
 
-var materialClient = new Material.MaterialClient(channel);
+    var materialClient = new Material.MaterialClient(channel);
 
             MaterialCreateReply returnMessage = await materialClient.SendCreateMaterialAsync(
                 new MaterialCreateRequest(){
@@ -105,11 +110,11 @@ var materialClient = new Material.MaterialClient(channel);
 
             Console.WriteLine(returnMessage.Message);
 
-Bu işlemden sonra örnek ekran çıktımız
+Bu işlemden sonra grpcServer'dan dönen response
 
-********** Eklenen Malzeme Bilgileri **********
-Eklenen Malzeme Kartı Adı --> Apple Macbook Pro 15 M1 Pro
-Eklenen Malzeme Kartı Açıklaması --> Apple Macbook Pro 16 gb Ram M1 CPU
-Eklenen Malzeme Stok Kodu --> MBPM1
+    ********** Eklenen Malzeme Bilgileri **********
+    Eklenen Malzeme Kartı Adı --> Apple Macbook Pro 15 M1 Pro
+    Eklenen Malzeme Kartı Açıklaması --> Apple Macbook Pro 16 gb Ram M1 CPU
+    Eklenen Malzeme Stok Kodu --> MBPM1
 
   
