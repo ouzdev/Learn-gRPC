@@ -225,4 +225,15 @@ Proto dosyasını oluşturduktan sonra uygulamayı build ediyoruz. Build işlemi
             {
                 Console.WriteLine(responseStream.ResponseStream.Current.Invoice);
             }
+
+Bu işlemlerin sonucunda iki uygulamayıda çalıştırdığımızda aldığımız ekran çıktısı
+
+    ************* Fatura Bilgileri *************
+    --> Fatura Numarası: EFT00000000005254
+    --> Fatura Adı: Satış Faturası
+    --> Fatura Açıklaması: Macbook Pro 15 MQ PRO Fatura Açıklaması
+
+    Faturanız Oluşturuluyor... Aşama %33
+    Faturanız Oluşturuluyor... Aşama %66
+    Faturanız Oluşturuldu... Aşama %100
   
