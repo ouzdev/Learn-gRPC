@@ -105,7 +105,7 @@ Sonrasında Client tarafında ilk olarak build işlemini yapıyoruz sonrasında 
 
             Console.WriteLine(returnMessage.Message);
 
-Bu işlemden sonra örnek ekran çıktımız
+Bu işlemden sonra grpcServer'dan dönen response
 
     ********** Eklenen Malzeme Bilgileri **********
     Eklenen Malzeme Kartı Adı --> Apple Macbook Pro 15 M1 Pro
