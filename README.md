@@ -112,3 +112,4 @@ Eklenen Malzeme Kartı Adı --> Apple Macbook Pro 15 M1 Pro
 Eklenen Malzeme Kartı Açıklaması --> Apple Macbook Pro 16 gb Ram M1 CPU
 Eklenen Malzeme Stok Kodu --> MBPM1
 
+  
