@@ -147,6 +147,43 @@ Bunu örnek kodlama üzerinden inceleyelim. Örnek olarak fatura bilgilerini gö
      message InvoiceCreateResponse {
       string invoice = 1;
     }
+### Client Yapılandırması
+Client tarafında proto dosyamızı oluşturuyoruz. Burada ki proto dosyamız servera göre tamamen aynı olacaktır.
+    syntax = "proto3";
 
+    option csharp_namespace = "grpcInvoiceClient";
 
+    package invoices;
+
+    service Invoice {
+
+    rpc SendCreateInvoice(InvoiceCreateRequest) returns (stream InvoiceCreateResponse);  //Server stream olacağı için return tipini stream olarak belirliyoruz.
+    }
+
+    message InvoiceCreateRequest {
+    string name = 1;
+    string description=2;
+    string no=3;
+    }
+
+    message InvoiceCreateResponse {
+    string invoice = 1;
+    }
+
+Proto dosyasını oluşturduktan sonra uygulamayı build ediyoruz. Build işleminden sonra Program.cs dosyasında request işlemini kodluyoruz.
+
+    var invoiceClient = new Invoice.InvoiceClient(channel);
+            var responseStream = invoiceClient.SendCreateInvoice(
+                        new InvoiceCreateRequest()
+                        {
+                            Description = "Macbook Pro 15 MQ PRO Fatura Açıklaması",
+                            Name = "Satış Faturası",
+                            No = "EFT00000000005254"
+                        }
+                );
+            CancellationTokenSource token = new CancellationTokenSource();
+            while (await responseStream.ResponseStream.MoveNext(token.Token))
+            {
+                Console.WriteLine(responseStream.ResponseStream.Current.Invoice);
+            }
   
