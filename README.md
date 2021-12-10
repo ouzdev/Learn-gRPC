@@ -1,6 +1,6 @@
 # gRPC 
 
-![grpc-nedir](https://github.com/ouzdev/gRPC/image/blob/master/grpc-net-core.png?raw=true)
+![grpc-nedir](https://github.com/ouzdev/gRPC/blob/master/image/grpc-net-core.png?raw=true)
 ## Başlangıç
 gRPC (Remote Procedure Call) Client başka bir sunucu uygulamasında ki bir fonksiyonu sanki kendi içerisindeki bir fonksiyonmuş gibi çağırıp çalıştırmasını sağlayan bir teknolojidir.
 
@@ -42,13 +42,13 @@ gRPC uygulamarda Client ve Server haberleşirken iletim türü ve mesaj içeriğ
 - **Client Streaming:**  Server Streaming in tam tersidir Client birden fazla istekte bulunur neticesinde tek bir response donulen türdür.
 - **Bi-Directional:**  Çift yönlü duplex streaming türüdür. Aynı anda Client ve Server ın haberleştiği modeldir.
 ## gRPC Yaşam Döngüsü
-![grpc-workflow](https://github.com/ouzdev/gRPC/image/blob/master/gRPC-workflow.png?raw=true)
-![grpc-workflow](https://github.com/ouzdev/gRPC/image/blob/master/grpc-workflow.jpeg?raw=true)
+![grpc-workflow](https://github.com/ouzdev/gRPC/blob/master/image/gRPC-workflow.png?raw=true)
+![grpc-workflow](https://github.com/ouzdev/gRPC/blob/master/image/grpc-workflow.jpeg?raw=true)
 
 Protobuf dosyası protoc ile compile edildiğinde ilgili platforma uygun bir şekilde arayüzler sınıfları oluşacaktır. Bu arayüzler oluştuktan sonra arayüzler sayesinde Client ve Server ın haberleşmesi mümkün hale gelecektir. Haberleşmede HTTP2 protokolu kullanılır. Herhangi bir iletiim türü ile iletişimde bulunulduğunda ilk olarak meta-data adında ki yapılanmalar RPC ye gidecektir ve sonrasında veri gönderilecektir.
 
 ## Unary
-![grpc-unary-type](https://github.com/ouzdev/gRPC/image/blob/master/grpc-unary-type.png?raw=true)
+![grpc-unary-type](https://github.com/ouzdev/gRPC/blob/master/image/grpc-unary-type.png?raw=true)
 
 Unary konsepti gRPC'deki en basit iletişim türüdür. Tek bir request'e karşılık tek bir response alınan en temel modeldir.
 Örnek bir kodlama üzerinden Unary türünü inceleyelim.
