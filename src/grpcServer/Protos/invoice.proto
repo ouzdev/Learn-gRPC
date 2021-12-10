@@ -6,7 +6,7 @@ package invoices;
 
 service Invoice {
 
-  rpc SendCreateInvoiceParameter(MaterialCreateRequest) returns (stream InvoiceCreateResponse);  //Server stream olacağı için return tipini stream olarak belirliyoruz.
+  rpc SendCreateInvoice(InvoiceCreateRequest) returns (stream InvoiceCreateResponse);  //Server stream olacağı için return tipini stream olarak belirliyoruz.
 }
 
 message InvoiceCreateRequest {
