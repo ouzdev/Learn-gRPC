@@ -239,3 +239,7 @@ Bu işlemlerin sonucunda iki uygulamayıda çalıştırdığımızda aldığım�
     Faturanız Oluşturuluyor... Aşama %66
     Faturanız Oluşturuldu... Aşama %100
   
+## Client Streaming
+Server streaming türünün tam tersi olarak Client tarafından Server tarafına Stream türünde bir veri gider ve tek bir response döner. Bunu örnek kodlama üzerinden inceleyelim. Örnek olarak Client tarafında bir rapor oluşturup bunu Stream türünde Server tarafına gönderelim.
+
+### Server Yapılandırması
