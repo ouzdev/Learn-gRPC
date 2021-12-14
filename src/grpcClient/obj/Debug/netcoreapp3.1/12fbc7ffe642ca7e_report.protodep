@@ -1,0 +1,2 @@
+obj\Debug\netcoreapp3.1\Protos/Report.cs \
+obj\Debug\netcoreapp3.1\Protos/ReportGrpc.cs: Protos/report.proto

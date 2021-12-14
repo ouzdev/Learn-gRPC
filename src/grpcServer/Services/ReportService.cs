@@ -18,7 +18,8 @@ public class ReportService : Report.ReportBase
         int count = 0;
         while (await requestStream.MoveNext(context.CancellationToken))
         {
-            Console.WriteLine("Rapor Yükleniyor Lütfen Bekleyiniz... | Aşama %" + count);
+            await Task.Delay(1000);
+            Console.WriteLine("Rapor Yükleniyor Lütfen Bekleyiniz... | Aşama %" + count*10);
             count++;
 
         }

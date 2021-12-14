@@ -5,6 +5,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using grpcInvoiceClient;
 using grpcMaterialClient;
+using grpcReportClient;
 using grpcServer;
 
 namespace grpcClient
@@ -44,6 +45,7 @@ namespace grpcClient
 
             Console.WriteLine(returnMessage.Message);
 
+            //Server Streaming
             var invoiceClient = new Invoice.InvoiceClient(channel);
             var responseStream = invoiceClient.SendCreateInvoice(
                         new InvoiceCreateRequest()
@@ -58,6 +60,25 @@ namespace grpcClient
             {
                 Console.WriteLine(responseStream.ResponseStream.Current.Invoice);
             }
+
+            //Client Streaming
+            var reportClient = new Report.ReportClient(channel);
+
+            var request = reportClient.SendReport();
+
+            for (int i = 0; i < 10; i++)
+            {
+                await request.RequestStream.WriteAsync(new ReportRequest
+                {
+                    Name = "Satış Raporu",
+                    Description = "Satış Raporu Açıklaması",
+                    ReportType = "13"
+                });
+            }
+
+            await request.RequestStream.CompleteAsync();
+
+            Console.WriteLine((await request.ResponseAsync).Message);
         }
     }
 }
