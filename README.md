@@ -119,6 +119,8 @@ Bu işlemden sonra grpcServer'dan dönen response
     Eklenen Malzeme Stok Kodu --> MBPM1
 
 ## Server Streaming
+![grpc-nedir](https://github.com/ouzdev/gRPC/blob/master/image/grpc-server-streaming.png?raw=true)
+
 Server streming türünde giden tek bir requeste karşılık, response olarak Stream türünde veri döner.
 Bunu örnek kodlama üzerinden inceleyelim. Örnek olarak fatura bilgilerini göndererek bu bilgiler ışığında bir fatura oluşturuyoruz.
 
