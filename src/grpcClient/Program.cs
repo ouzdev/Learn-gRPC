@@ -20,7 +20,7 @@ namespace grpcClient
 
             HelloReply msg = await greetClient.SayHelloAsync(
                  new HelloRequest()
-                 { Name = "Oğuzcan Genç Test 2" }
+                 { Name = "Oğuzcan Genç Test 3" }
                  );
             CalculatorReply clc = await greetClient.CalculatorAsync(
                 new CalculatorRequest()
